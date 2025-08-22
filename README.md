@@ -20,17 +20,17 @@ Este proyecto es una aplicación web construida con Django que permite registrar
 
 1. Clona el repositorio
 2. En la terminal, define las dependencias
-       pip install django djangorestframework
+      --> pip install django djangorestframework
 3. En la terminal, define las migraciones
-       python manage.py makemigrations
-       python manage.py migrate
+       --> python manage.py makemigrations
+       --> python manage.py migrate
 4. En terminal, crea un superusuario:
-       python manage.py createsuperuser
+       --> python manage.py createsuperuser
    *USUARIO PRUEBA*
          user: admin
          password: admin123
 6. Ejecuta el servidor:
-       python manage.py runserver
+       --> python manage.py runserver
  
 Accede a la aplicación:
 
