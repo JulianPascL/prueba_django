@@ -10,7 +10,7 @@ Este proyecto es una aplicación web construida con Django que permite registrar
 - Paginación en el listado.
 - Validación de precio positivo.
 
-#REQUISITOS
+# REQUISITOS
 
 - Python 3.10 o superior
 - Django 5.x
