@@ -1,34 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Lista de productos</h2>
-<table border="1">
-    <tr>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Fecha</th>
-    </tr>
+<h2 class="mb-4">Lista de productos</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
     {% for producto in productos %}
-    <tr>
-        <td>{{ producto.nombre }}</td>
-        <td>{{ producto.descripcion }}</td>
-        <td>{{ producto.precio }}</td>
-        <td>{{ producto.fecha_creacion }}</td>
-    </tr>
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.fecha_creacion }}</td>
+        </tr>
     {% endfor %}
+    </tbody>
 </table>
-<div>
+<div class="mb-3">
     {% if productos.has_previous %}
-        <a href="?page={{ productos.previous_page_number }}">Anterior</a>
+        <a class="btn btn-outline-primary btn-sm" href="?page={{ productos.previous_page_number }}">Anterior</a>
     {% endif %}
-    Página {{ productos.number }} de {{ productos.paginator.num_pages }}
+    <span class="mx-2">Página {{ productos.number }} de {{ productos.paginator.num_pages }}</span>
     {% if productos.has_next %}
-        <a href="?page={{ productos.next_page_number }}">Siguiente</a>
+        <a class="btn btn-outline-primary btn-sm" href="?page={{ productos.next_page_number }}">Siguiente</a>
     {% endif %}
 </div>
-<a href="{% url 'agregar_producto' %}">Agregar producto</a> |
+<a class="btn btn-success" href="{% url 'agregar_producto' %}">Agregar producto</a>
 <form action="{% url 'logout' %}" method="post" style="display:inline;">
   {% csrf_token %}
-  <button type="submit">Cerrar sesión</button>
+  <button class="btn btn-secondary" type="submit">Cerrar sesión</button>
 </form>
 {% endblock %}
