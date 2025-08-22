@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Lista de productos</h2>
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Fecha</th>
+    </tr>
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.fecha_creacion }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div>
+    {% if productos.has_previous %}
+        <a href="?page={{ productos.previous_page_number }}">Anterior</a>
+    {% endif %}
+    Página {{ productos.number }} de {{ productos.paginator.num_pages }}
+    {% if productos.has_next %}
+        <a href="?page={{ productos.next_page_number }}">Siguiente</a>
+    {% endif %}
+</div>
+<a href="{% url 'agregar_producto' %}">Agregar producto</a> |
+<form action="{% url 'logout' %}" method="post" style="display:inline;">
+  {% csrf_token %}
+  <button type="submit">Cerrar sesión</button>
+</form>
+{% endblock %}
